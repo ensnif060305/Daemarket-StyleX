@@ -24,11 +24,6 @@ module.exports = {
   plugins: ["@typescript-eslint", "react", "@stylexjs"],
   rules: {
     "react/react-in-jsx-scope": "off",
-    "@stylexjs/valid-styles": [
-      "error",
-      {
-        animationName: "off",
-      },
-    ],
+    "@stylexjs/valid-styles": ["error"],
   },
 }
