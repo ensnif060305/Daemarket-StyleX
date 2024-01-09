@@ -6,4 +6,10 @@ import styleX from "vite-plugin-stylex"
 export default defineConfig({
   plugins: [react(), styleX()],
   cacheDir: "./.vite",
+  resolve: {
+    alias: [
+      { find: "@styles", replacement: "/src/styles" },
+      { find: "@", replacement: "/src" },
+    ],
+  },
 })
