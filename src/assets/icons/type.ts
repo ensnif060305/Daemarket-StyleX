@@ -3,4 +3,5 @@ export interface IIcon {
   color?: string
   onClick?: () => void
   variant?: "BlackDesc" | "Only"
+  visible?: boolean
 }

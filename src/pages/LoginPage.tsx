@@ -1,0 +1,74 @@
+import { EyeIcon, LogoIcon } from "@/assets/icons"
+import { Button } from "@/components/Common/Button"
+import { Input } from "@/components/Common/Input"
+import { colors, font } from "../styles/globalToken.stylex"
+import * as stylex from "@stylexjs/stylex"
+import { HStack, VStack } from "@/components/Stack"
+import { useState } from "react"
+
+const LoginPage = () => {
+  const [visible, setVisible] = useState<boolean>(false)
+
+  return (
+    <div {...stylex.props(styles.container)}>
+      <div {...stylex.props(styles.wrapper)}>
+        <LogoIcon variant="BlackDesc" />
+        <VStack style={styles.inputStack}>
+          <Input
+            type="email"
+            label="이메일"
+            placeHolder="이메일을 입력해주세요"
+            errorMessage="존재하지 않는 계정이에요">
+            <span {...stylex.props(font.body1)}>@dsm.hs.kr</span>
+          </Input>
+          <Input type={visible ? "passwordVisible" : "password"} label="비밀번호" placeHolder="비밀번호를 입력해주세요">
+            <EyeIcon visible={visible} onClick={() => setVisible(!visible)} />
+          </Input>
+        </VStack>
+        <VStack style={styles.buttonStack}>
+          <Button label="로그인 하기" color="primary" style={styles.loginButton} />
+          <HStack style={styles.inputStack}>
+            <button {...stylex.props(font.body3, styles.serveButton)}>회원가입</button>
+            <button {...stylex.props(font.body3, styles.serveButton)}>비밀번호 찾기</button>
+          </HStack>
+        </VStack>
+      </div>
+    </div>
+  )
+}
+
+export default LoginPage
+
+const styles = stylex.create({
+  container: {
+    minWidth: "764px",
+    width: "100vw",
+    height: "100vh",
+  },
+  wrapper: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    gap: "48px",
+  },
+  inputStack: {
+    gap: "16px",
+  },
+  buttonStack: {
+    gap: "12px",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loginButton: {
+    width: "410px",
+    height: "48px",
+  },
+  serveButton: {
+    backgroundColor: "transparent",
+    color: colors.gray500,
+    textDecorationLine: "underline",
+  },
+})
