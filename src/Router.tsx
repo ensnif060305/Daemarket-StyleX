@@ -1,9 +1,12 @@
-import { BrowserRouter, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import LoginPage from "@/pages/LoginPage"
 
 export const Router = () => {
   return (
     <BrowserRouter>
-      <Routes></Routes>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
     </BrowserRouter>
   )
 }
