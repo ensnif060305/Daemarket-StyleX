@@ -5,8 +5,10 @@ import { colors, font } from "../styles/globalToken.stylex"
 import * as stylex from "@stylexjs/stylex"
 import { HStack, VStack } from "@/components/Stack"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const [visible, setVisible] = useState<boolean>(false)
 
   return (
@@ -26,9 +28,11 @@ const LoginPage = () => {
           </Input>
         </VStack>
         <VStack style={styles.buttonStack}>
-          <Button label="로그인 하기" color="primary" style={styles.loginButton} />
+          <Button size="small" label="로그인 하기" variant="primary" style={styles.loginButton} />
           <HStack style={styles.inputStack}>
-            <button {...stylex.props(font.body3, styles.serveButton)}>회원가입</button>
+            <button {...stylex.props(font.body3, styles.serveButton)} onClick={() => navigate("/signup")}>
+              회원가입
+            </button>
             <button {...stylex.props(font.body3, styles.serveButton)}>비밀번호 찾기</button>
           </HStack>
         </VStack>
