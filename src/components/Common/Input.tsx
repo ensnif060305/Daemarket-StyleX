@@ -5,7 +5,7 @@ import { useState, ReactNode, ChangeEvent, CSSProperties } from "react"
 import { VStack } from "../Stack"
 
 interface IInput {
-  type: "email" | "search" | "text" | "button" | "allowEmail" | "password" | "passwordVisible"
+  type: "email" | "search" | "text" | "button" | "allowButton" | "allowEmail" | "password" | "passwordVisible"
   value?: string
   placeHolder?: string
   label?: string
@@ -55,10 +55,10 @@ export const Input = ({ value, placeHolder, label, maxLength, type, errorMessage
             {children && <div {...stylex.props(styles.inputSide)}>{children}</div>}
           </div>
         </VStack>
-        {(type !== "text" || "search") && (
+        {errorMessage && (
           <div {...stylex.props(styles.errorWrapper)}>
-            {errorMessage && <ErrorIcon />}
-            {errorMessage && <span {...stylex.props(font.body3, styles.error)}>{errorMessage}</span>}
+            <ErrorIcon />
+            <span {...stylex.props(font.body3, styles.error)}>{errorMessage}</span>
           </div>
         )}
       </div>
@@ -148,6 +148,9 @@ const width = stylex.create({
   },
   text: {
     width: "100%",
+  },
+  allowButton: {
+    width: "75%",
   },
   button: {
     width: "75%",

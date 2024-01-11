@@ -7,33 +7,52 @@ import { HStack, VStack } from "@/components/Stack"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-const LoginPage = () => {
+const SignupPage = () => {
   const navigate = useNavigate()
-  const [visible, setVisible] = useState<boolean>(false)
+  const [visible1, setVisible1] = useState<boolean>(false)
+  const [visible2, setVisible2] = useState<boolean>(false)
 
   return (
     <div {...stylex.props(styles.container)}>
       <div {...stylex.props(styles.wrapper)}>
         <LogoIcon variant="BlackDesc" />
         <VStack style={styles.inputStack}>
+          <Input type="text" label="학번 이름" placeHolder="학번 이름을 입력해주세요" />
           <Input
-            type="email"
+            type="allowEmail"
             label="이메일"
             placeHolder="이메일을 입력해주세요"
             errorMessage="존재하지 않는 계정이에요">
             <span {...stylex.props(font.body1)}>@dsm.hs.kr</span>
+            <Button size="small" label="인증코드 발송" variant="onlyText" />
           </Input>
-          <Input type={visible ? "passwordVisible" : "password"} label="비밀번호" placeHolder="비밀번호를 입력해주세요">
-            <EyeIcon visible={visible} onClick={() => setVisible(!visible)} />
+          <Input
+            type="allowButton"
+            label="인증코드"
+            placeHolder="인증코드를 입력해주세요"
+            errorMessage="코드가 잘못되었어요">
+            <Button size="small" label="인증하기" variant="onlyText" />
+          </Input>
+          <Input
+            type={visible1 ? "passwordVisible" : "password"}
+            label="비밀번호"
+            placeHolder="비밀번호를 입력해주세요">
+            <EyeIcon visible={visible1} onClick={() => setVisible1(!visible1)} />
+          </Input>
+          <Input
+            type={visible2 ? "passwordVisible" : "password"}
+            label="비밀번호 확인"
+            placeHolder="비밀번호를 다시 입력해주세요">
+            <EyeIcon visible={visible2} onClick={() => setVisible2(!visible2)} />
           </Input>
         </VStack>
         <VStack style={styles.buttonStack}>
-          <Button size="small" label="로그인 하기" variant="primary" style={styles.loginButton} />
+          <Button size="small" label="회원가입 하기" variant="primary" style={styles.signupButton} />
           <HStack style={styles.inputStack}>
-            <button {...stylex.props(font.body3, styles.serveButton)} onClick={() => navigate("/signup")}>
-              회원가입
+            <button {...stylex.props(font.body1, styles.serveButton)} onClick={() => navigate("/login")}>
+              로그인
             </button>
-            <button {...stylex.props(font.body3, styles.serveButton)}>비밀번호 찾기</button>
+            <button {...stylex.props(font.body1, styles.serveButton)}>비밀번호 찾기</button>
           </HStack>
         </VStack>
       </div>
@@ -41,7 +60,7 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default SignupPage
 
 const styles = stylex.create({
   container: {
@@ -66,7 +85,7 @@ const styles = stylex.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  loginButton: {
+  signupButton: {
     width: "410px",
     height: "48px",
   },

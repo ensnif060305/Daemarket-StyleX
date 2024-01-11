@@ -3,7 +3,8 @@ import { colors, font } from "../../styles/globalToken.stylex"
 
 interface IButton {
   label: string
-  color: "secondary" | "primary"
+  size: "small" | "medium"
+  variant: "secondary" | "primary" | "onlyText"
   style?: stylex.StyleXStyles<{
     width?: React.CSSProperties["width"]
     height?: React.CSSProperties["height"]
@@ -11,16 +12,20 @@ interface IButton {
   }>
 }
 
-export const Button = ({ label, color, style }: IButton) => {
-  return <button {...stylex.props(font.heading3, styles.button, styles[color], style)}>{label}</button>
+export const Button = ({ label, size, variant, style }: IButton) => {
+  return (
+    <button {...stylex.props(font.heading3, size === "small" && font.body1, styles.button, styles[variant], style)}>
+      {label}
+    </button>
+  )
 }
 
 const styles = stylex.create({
   button: {
     display: "flex",
     padding: "16px 0px",
-    width: "520px",
-    height: "54px",
+    maxWidth: "520px",
+    maxHeight: "54px",
     borderRadius: "12px",
     justifyContent: "center",
     alignItems: "center",
@@ -39,5 +44,9 @@ const styles = stylex.create({
       default: colors.primary100,
       ":active": colors.primary200,
     },
+  },
+  onlyText: {
+    color: colors.primary300,
+    backgroundColor: "transparent",
   },
 })
