@@ -17,7 +17,7 @@ const SignupPage = () => {
       <div {...stylex.props(styles.wrapper)}>
         <LogoIcon variant="BlackDesc" />
         <VStack style={styles.inputStack}>
-          <Input type="text" label="이름" placeHolder="이름을 입력해주세요" />
+          <Input type="text" label="학번 이름" placeHolder="학번 이름을 입력해주세요" />
           <Input
             type="allowEmail"
             label="이메일"
@@ -47,7 +47,7 @@ const SignupPage = () => {
           </Input>
         </VStack>
         <VStack style={styles.buttonStack}>
-          <Button size="small" label="회원가입 하기" variant="primary" style={styles.loginButton} />
+          <Button size="small" label="회원가입 하기" variant="primary" style={styles.signupButton} />
           <HStack style={styles.inputStack}>
             <button {...stylex.props(font.body1, styles.serveButton)} onClick={() => navigate("/login")}>
               로그인
@@ -85,7 +85,7 @@ const styles = stylex.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  loginButton: {
+  signupButton: {
     width: "410px",
     height: "48px",
   },
