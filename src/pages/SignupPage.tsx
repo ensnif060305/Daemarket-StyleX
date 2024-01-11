@@ -24,7 +24,7 @@ const SignupPage = () => {
             placeHolder="이메일을 입력해주세요"
             errorMessage="존재하지 않는 계정이에요">
             <span {...stylex.props(font.body1)}>@dsm.hs.kr</span>
-            <Button size="small" label="중복확인" variant="onlyText" />
+            <Button size="small" label="인증코드 발송" variant="onlyText" />
           </Input>
           <Input
             type="allowButton"
