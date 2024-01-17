@@ -33,7 +33,9 @@ const LoginPage = () => {
             <button {...stylex.props(font.body3, styles.serveButton)} onClick={() => navigate("/signup")}>
               회원가입
             </button>
-            <button {...stylex.props(font.body3, styles.serveButton)}>비밀번호 찾기</button>
+            <button {...stylex.props(font.body3, styles.serveButton)} onClick={() => navigate("/signup")}>
+              비밀번호 찾기
+            </button>
           </HStack>
         </VStack>
       </div>
