@@ -1,4 +1,4 @@
-import { ErrorIcon } from "@/assets/icons"
+import { ErrorIcon, SearchIcon } from "@/assets/icons"
 import { colors, font } from "../../styles/globalToken.stylex"
 import * as stylex from "@stylexjs/stylex"
 import { useState, ReactNode, ChangeEvent, CSSProperties } from "react"
@@ -38,7 +38,12 @@ export const Input = ({ value, placeHolder, label, maxLength, type, errorMessage
               )}
             </div>
           )}
-          <div {...stylex.props(styles.inputWrapper)}>
+          <div {...stylex.props(styles.inputWrapper, type === "search" && styles.searchInputWrapper)}>
+            {type === "search" && (
+              <div {...stylex.props(styles.inputSide1)}>
+                <SearchIcon />
+              </div>
+            )}
             <input
               type={type === "password" ? type : "text"}
               {...stylex.props(
@@ -52,7 +57,7 @@ export const Input = ({ value, placeHolder, label, maxLength, type, errorMessage
               onChange={onInputHandler}
               maxLength={maxLength}
             />
-            {children && <div {...stylex.props(styles.inputSide)}>{children}</div>}
+            {children && <div {...stylex.props(styles.inputSide2)}>{children}</div>}
           </div>
         </VStack>
         {errorMessage && (
@@ -98,10 +103,13 @@ const styles = stylex.create({
     borderColor: colors.gray300,
     backgroundColor: colors.gray200,
   },
+  searchInputWrapper: {
+    height: "40px",
+  },
   input: {
     width: "50%",
     height: "100%",
-    paddingLeft: "12px",
+    padding: "12px",
     backgroundColor: "transparent",
     color: colors.gray800,
     "::placeholder": {
@@ -111,11 +119,19 @@ const styles = stylex.create({
   inputPassword: {
     letterSpacing: "-5px",
   },
-  inputSide: {
+  inputSide1: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-    paddingRight: "12px",
+    paddingLeft: "9px",
+    width: null,
+    gap: "5px",
+  },
+  inputSide2: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    paddingRight: "9px",
     width: null,
     gap: "5px",
   },
@@ -141,7 +157,7 @@ const width = stylex.create({
     width: "90%",
   },
   search: {
-    width: "90%",
+    width: "85%",
   },
   allowEmail: {
     width: "50%",
