@@ -1,5 +1,5 @@
 import { LogoIcon } from "@/assets/icons"
-import { pathState } from "@/atoms"
+import { pathState } from "@/atoms/url"
 import { Link, useLocation } from "react-router-dom"
 import { useRecoilState } from "recoil"
 import { style as $ } from "./style"
@@ -18,7 +18,7 @@ export const Header = () => {
 
   useEffect(() => {
     setPath(location.pathname.split("/")[1])
-  }, [])
+  }, [location.pathname, setPath])
 
   return (
     <div {...stylex.props($.container)}>
