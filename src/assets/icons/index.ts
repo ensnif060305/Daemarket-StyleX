@@ -1,4 +1,6 @@
 export * from "./LogoIcon"
 export * from "./EyeIcon"
 export * from "./ErrorIcon"
-export * from "./GithubIcon"
+export * from "./NotionIcon"
+export * from "./SearchIcon"
+export * from "./CloseIcon"
