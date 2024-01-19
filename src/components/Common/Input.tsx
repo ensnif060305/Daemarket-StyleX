@@ -38,7 +38,7 @@ export const Input = ({ value, placeHolder, label, maxLength, type, errorMessage
               )}
             </div>
           )}
-          <div {...stylex.props(styles.inputWrapper)}>
+          <div {...stylex.props(styles.inputWrapper, type === "search" && styles.searchInputWrapper)}>
             {type === "search" && (
               <div {...stylex.props(styles.inputSide1)}>
                 <SearchIcon />
@@ -102,6 +102,9 @@ const styles = stylex.create({
     borderStyle: "solid",
     borderColor: colors.gray300,
     backgroundColor: colors.gray200,
+  },
+  searchInputWrapper: {
+    height: "40px",
   },
   input: {
     width: "50%",
