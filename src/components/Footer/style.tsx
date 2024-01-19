@@ -3,6 +3,8 @@ import * as stylex from "@stylexjs/stylex"
 
 export const style = stylex.create({
   container: {
+    maxWidth: "1280px",
+    minWidth: "720px",
     width: "100%",
     height: "auto",
   },

@@ -1,4 +1,4 @@
-import { GithubIcon, LogoIcon } from "@/assets/icons"
+import { NotionIcon, LogoIcon } from "@/assets/icons"
 import { HStack, VStack } from "@/components/Stack"
 import * as stylex from "@stylexjs/stylex"
 import { style as $ } from "./style"
@@ -28,12 +28,8 @@ export const Footer = () => {
               <span {...stylex.props(font.body3, $.footerSpan)}>박시원</span>
             </HStack>
           </VStack>
-          <VStack style={$.infoWrapper}>
-            <span {...stylex.props(font.body4, $.footerSpan)}>© 2023 대덕소프트웨어마이스터고등학교</span>
-            <span {...stylex.props(font.body4, $.footerSpan)}>대전광역시 유성구 가정북로 76(장동 23-9)</span>
-          </VStack>
         </VStack>
-        <GithubIcon />
+        <NotionIcon />
       </div>
     </div>
   )
