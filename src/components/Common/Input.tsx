@@ -2,7 +2,7 @@ import { ErrorIcon, SearchIcon } from "@/assets/icons"
 import { colors, font } from "../../styles/globalToken.stylex"
 import * as stylex from "@stylexjs/stylex"
 import { useState, ReactNode, ChangeEvent, CSSProperties } from "react"
-import { VStack } from "../Stack"
+import { HStack, VStack } from "../Stack"
 
 interface IInput {
   type: "email" | "search" | "text" | "button" | "allowButton" | "allowEmail" | "password" | "passwordVisible"
@@ -29,14 +29,14 @@ export const Input = ({ value, placeHolder, label, maxLength, type, errorMessage
       <div {...stylex.props(styles.wrapper)}>
         <VStack style={styles.inputContainer}>
           {label && (
-            <div>
+            <HStack style={styles.inputLabel}>
               <span {...stylex.props(font.body4, styles.label)}>{label}</span>
               {maxLength && (
                 <span {...stylex.props(font.body4, styles.label)}>
                   {count} / {maxLength}
                 </span>
               )}
-            </div>
+            </HStack>
           )}
           <div {...stylex.props(styles.inputWrapper, type === "search" && styles.searchInputWrapper)}>
             {type === "search" && (
@@ -87,7 +87,6 @@ const styles = stylex.create({
     gap: "4px",
   },
   label: {
-    width: "100%",
     color: colors.gray500,
   },
   inputWrapper: {
@@ -105,6 +104,9 @@ const styles = stylex.create({
   },
   searchInputWrapper: {
     height: "40px",
+  },
+  inputLabel: {
+    justifyContent: "space-between",
   },
   input: {
     width: "50%",
